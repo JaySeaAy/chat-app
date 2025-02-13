@@ -55,26 +55,29 @@ socket.on('actualizarMensajes', (mensajesActualizados) => {
 
   mensajesActualizados.forEach((data) => {
     const { name, text, time, leido } = data;
-    const li = $('<li>').addClass('box');
+    const li = $('<li>').addClass('is-flex');
 
     if (name === nameInput.val()) {
-      li.addClass('has-background-primary-light');
+      li.addClass('is-justify-content-flex-end'); // Alinear a la derecha
+      li.html(`
+        <div class="box has-background-primary-light">
+          <div class="content">
+            <p>${text}</p>
+            <small class="has-text-grey">${time}</small>
+          </div>
+        </div>
+      `);
     } else {
-      li.addClass('has-background-light');
+      li.addClass('is-justify-content-flex-start'); // Alinear a la izquierda
+      li.html(`
+        <div class="box has-background-light">
+          <div class="content">
+            <p>${text}</p>
+            <small class="has-text-grey">${time}</small>
+          </div>
+        </div>
+      `);
     }
-
-    if (leido) {
-      li.addClass('has-text-grey');
-    } else {
-      li.addClass('has-text-dark');
-    }
-
-    li.html(`
-      <div class="content">
-        <p>${text}</p>
-        <small class="has-text-grey">${time}</small>
-      </div>
-    `);
 
     chatDisplay.append(li);
   });
@@ -86,26 +89,29 @@ socket.on('actualizarMensajes', (mensajesActualizados) => {
 
 socket.on('message', (data) => {
   const { name, text, time, leido } = data;
-  const li = $('<li>').addClass('box');
+  const li = $('<li>').addClass('is-flex');
 
   if (name === nameInput.val()) {
-    li.addClass('has-background-primary-light');
+    li.addClass('is-justify-content-flex-end'); // Alinear a la derecha
+    li.html(`
+      <div class="box has-background-primary-light">
+        <div class="content">
+          <p>${text}</p>
+          <small class="has-text-grey">${time}</small>
+        </div>
+      </div>
+    `);
   } else {
-    li.addClass('has-background-light');
+    li.addClass('is-justify-content-flex-start'); // Alinear a la izquierda
+    li.html(`
+      <div class="box has-background-light">
+        <div class="content">
+          <p>${text}</p>
+          <small class="has-text-grey">${time}</small>
+        </div>
+      </div>
+    `);
   }
-
-  if (leido) {
-    li.addClass('has-text-grey');
-  } else {
-    li.addClass('has-text-dark');
-  }
-
-  li.html(`
-    <div class="content">
-      <p>${text}</p>
-      <small class="has-text-grey">${time}</small>
-    </div>
-  `);
 
   chatDisplay.append(li);
   chatDisplay.scrollTop(chatDisplay[0].scrollHeight);
