@@ -58,7 +58,7 @@ socket.on('actualizarMensajes', (mensajesActualizados) => {
     const li = $('<li>').addClass('is-flex');
 
     if (name === nameInput.val()) {
-      li.addClass('is-justify-content-flex-end'); // Alinear a la derecha
+      li.addClass('is-justify-content-flex-end'); 
       li.html(`
         <div class="box has-background-primary-light">
           <div class="content">
@@ -68,7 +68,7 @@ socket.on('actualizarMensajes', (mensajesActualizados) => {
         </div>
       `);
     } else {
-      li.addClass('is-justify-content-flex-start'); // Alinear a la izquierda
+      li.addClass('is-justify-content-flex-start'); 
       li.html(`
         <div class="box has-background-light">
           <div class="content">
